@@ -78,7 +78,7 @@ cd "$basedir/lib/MojoShader"
 # rm -rf build
 mkdir -p build
 cd build
-cmake -DCMAKE_PREFIX_PATH="$PREFIX" -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+cmake -DCMAKE_PREFIX_PATH="$PREFIX" -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo -DPROFILE_METAL=NO ..
 make -j4
 install -v ./libmojoshader.so -t "$PREFIX/usr/local/lib"
 cd "$basedir"
