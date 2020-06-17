@@ -120,4 +120,4 @@ cp -v ./lib/mono/4.5/mscorlib.dll "$basedir/build"
 echo ">> Compressing package celeste-$LIB_ARCH.tar.gz"
 cd "$basedir/build"
 cp ../Celeste.sh .
-tar czf ../celeste-$LIB_ARCH.tar.gz Celeste.sh $LIB_ARCH
+tar czf ../celeste-$LIB_ARCH.tar.gz *
