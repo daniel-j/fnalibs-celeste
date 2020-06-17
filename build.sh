@@ -44,7 +44,7 @@ cd "$basedir/lib/MonoKickstart"
 # rm -rf build
 mkdir -p build
 cd build
-LDFLAGS="-lgssglue -lz -lkrb5" cmake -DCMAKE_PREFIX_PATH="$PREFIX" -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+cmake -DCMAKE_PREFIX_PATH="$PREFIX" -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 make -j4
 mv kick.bin.* kick.bin.$ARCH || true
 chrpath -r "\$ORIGIN/$LIB_ARCH" kick.bin.*
