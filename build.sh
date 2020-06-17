@@ -2,6 +2,8 @@
 
 set -e
 
+git submodule update --init --recursive
+
 basedir="$(pwd)"
 ARCH=$(uname -m)
 export PREFIX="$basedir/prefix"

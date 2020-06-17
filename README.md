@@ -2,8 +2,6 @@
 
 ## Usage
 
-Either clone the repository recursively or run `git submodule update --init --recursive` after you have cloned it.
-
 First, download FMOD Engine version 1.10.20 from [https://www.fmod.com/download](https://www.fmod.com/download). You need to create an account to download. Then navigate to the downloads page, click [FMOD Studio Suite](https://www.fmod.com/download#fmodstudiosuite) and under FMOD Engine click Older and select 1.10.20 in the dropdown. Then click Download on the line with Linux. Place the downloaded file at the root of this repository.
 
 Install SDL2's devel package with `sudo apt install libsdl2-dev`. This installs the required dependencies for building SDL2.
