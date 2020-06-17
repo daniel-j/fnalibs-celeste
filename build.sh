@@ -27,7 +27,7 @@ case "$ARCH" in
 esac
 
 #rm -rf prefix
-mkdir -p prefix/local/lib
+mkdir -p prefix/usr/local/lib
 
 #Extract FMOD
 #rm -rf lib/fmodstudioapi
