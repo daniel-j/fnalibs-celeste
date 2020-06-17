@@ -16,4 +16,6 @@ export DISPLAY=${DISPLAY:-:0}
 
 # If you have gamemoderun installed
 #exec gamemoderun mono ./Celeste.exe
+# If you don't, set cpufreq scaling_governor to performance
+echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 exec mono Celeste.exe
