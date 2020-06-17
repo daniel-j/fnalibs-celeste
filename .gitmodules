@@ -4,3 +4,9 @@
 [submodule "lib/FAudio"]
 	path = lib/FAudio
 	url = https://github.com/FNA-XNA/FAudio.git
+[submodule "lib/SDL"]
+	path = lib/SDL
+	url = https://github.com/SDL-mirror/SDL.git
+[submodule "lib/SDL_image_compact"]
+	path = lib/SDL_image_compact
+	url = https://github.com/FNA-XNA/SDL_image_compact.git
