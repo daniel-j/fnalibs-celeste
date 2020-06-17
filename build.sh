@@ -47,8 +47,8 @@ cd build
 cmake -DCMAKE_PREFIX_PATH="$PREFIX" -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 make -j4
 mv kick.bin.* kick.bin.$ARCH || true
-patchelf --set-rpath "\$ORIGIN/$LIB_ARCH" kick.bin.*
-install -v kick.bin.* -t "$PREFIX/usr/local/bin"
+patchelf --set-rpath "\$ORIGIN/$LIB_ARCH" kick.bin.$ARCH
+install -v kick.bin.$ARCH -t "$PREFIX/usr/local/bin"
 
 # Extract FMOD
 echo ">> Extracting FMOD..."
@@ -110,7 +110,7 @@ mkdir -p build/$LIB_ARCH
 cd "$PREFIX/usr/local/lib"
 cp -v libSDL2-2.0.so.0 libSDL2_image-2.0.so.0 libmojoshader.so libfmod_SDL.so libfmod.so.10 libfmodstudio.so.10 "$basedir/build/$LIB_ARCH"
 cd "$PREFIX/usr/local/bin"
-cp -v kick.bin.* "$basedir/build/Celeste.bin.$ARCH"
+cp -v kick.bin.$ARCH "$basedir/build/Celeste.bin.$ARCH"
 cd "$PREFIX"
 cp -v ./etc/mono/config "$basedir/build/monoconfig"
 cp -v ./etc/mono/config "$basedir/build/monoconfig"
