@@ -13,3 +13,6 @@
 [submodule "lib/FMOD_SDL"]
 	path = lib/FMOD_SDL
 	url = https://github.com/flibitijibibo/FMOD_SDL.git
+[submodule "MonoKickstart"]
+	path = MonoKickstart
+	url = https://github.com/flibitijibibo/MonoKickstart.git

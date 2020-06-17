@@ -1,5 +1,5 @@
 fmodstudioapi*
 lib/fmodstudioapi
 prefix
-lib*
-celeste-lib*
+libarmhf
+celeste-libarmhf
