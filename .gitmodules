@@ -1,0 +1,3 @@
+[submodule "lib/MojoShader"]
+	path = lib/MojoShader
+	url = https://github.com/FNA-XNA/MojoShader.git
