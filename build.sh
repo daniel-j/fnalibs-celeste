@@ -28,12 +28,12 @@ case "$ARCH" in
     ;;
 esac
 
-#rm -rf prefix
+# rm -rf prefix
 mkdir -p prefix/usr/local/lib
 
-#Extract FMOD
+# Extract FMOD
 echo ">> Extracting FMOD..."
-#rm -rf lib/fmodstudioapi
+# rm -rf lib/fmodstudioapi
 mkdir -p lib/fmodstudioapi
 tar xf "$FMOD_FILE" -C lib/fmodstudioapi --strip 1
 install -v lib/fmodstudioapi/api/lowlevel/lib/$FMOD_ARCH/*.so* -t "$PREFIX/usr/local/lib"
@@ -49,7 +49,7 @@ install -v ./libfmod_SDL.so -t "$PREFIX/usr/local/lib"
 # Build SDL2
 echo ">> Building SDL2..."
 cd "$basedir/lib/SDL"
-#rm -rf build
+# rm -rf build
 mkdir -p build
 cd build
 cmake -DCMAKE_PREFIX_PATH="$PREFIX" -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
