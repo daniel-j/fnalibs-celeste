@@ -30,6 +30,7 @@ esac
 mkdir -p prefix/usr/local/lib
 
 #Extract FMOD
+echo ">> Extracting FMOD..."
 #rm -rf lib/fmodstudioapi
 mkdir -p lib/fmodstudioapi
 tar xf "$FMOD_FILE" -C lib/fmodstudioapi --strip 1
@@ -37,12 +38,14 @@ install -v lib/fmodstudioapi/api/lowlevel/lib/$FMOD_ARCH/*.so* -t "$PREFIX/usr/l
 install -v lib/fmodstudioapi/api/studio/lib/$FMOD_ARCH/*.so* -t "$PREFIX/usr/local/lib"
 
 # Build FMOD_SDL
+echo ">> Building FMOD_SDL..."
 cd "$basedir/lib/FMOD_SDL"
 ln -sfv -t . ../fmodstudioapi/api/lowlevel/inc/*.h ../fmodstudioapi/api/lowlevel/lib/$FMOD_ARCH/libfmod.so.10
 make -j4
 install -v ./libfmod_SDL.so -t "$PREFIX/usr/local/lib"
 
 # Build SDL2
+echo ">> Building SDL2..."
 cd "$basedir/lib/SDL"
 #rm -rf build
 mkdir -p build
@@ -53,6 +56,7 @@ make DESTDIR="$PREFIX" install
 cd "$basedir"
 
 # Build SDL_image_compact
+echo ">> Building SDL_image_compact"
 cd "$basedir/lib/SDL_image_compact"
 make -j4
 install -v ./libSDL2_image*.so* -t "$PREFIX/usr/local/lib"
@@ -69,6 +73,7 @@ cd "$basedir"
 # cd "$basedir"
 
 # Build MojoShader
+echo ">> Building MojoShader"
 cd "$basedir/lib/MojoShader"
 # rm -rf build
 mkdir -p build
@@ -78,11 +83,11 @@ make -j4
 install -v ./libmojoshader.so -t "$PREFIX/usr/local/lib"
 cd "$basedir"
 
-
+echo ">> Copying libraries"
 mkdir -p $LIB_ARCH
 cd "$PREFIX/usr/local/lib"
 cp -v libSDL2-2.0.so.0 libSDL2_image-2.0.so.0 libmojoshader.so libfmod_SDL.so libfmod.so.10 libfmodstudio.so.10 "$basedir/$LIB_ARCH"
 
+echo ">> Compressing package celeste-$LIB_ARCH.tar.gz"
 cd "$basedir"
-echo "Compressing package celeste-$LIB_ARCH.tar.gz"
 tar czf celeste-$LIB_ARCH.tar.gz Celeste.sh $LIB_ARCH
