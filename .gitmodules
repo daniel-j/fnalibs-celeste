@@ -1,3 +1,6 @@
 [submodule "lib/MojoShader"]
 	path = lib/MojoShader
 	url = https://github.com/FNA-XNA/MojoShader.git
+[submodule "lib/FAudio"]
+	path = lib/FAudio
+	url = https://github.com/FNA-XNA/FAudio.git
