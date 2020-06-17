@@ -10,13 +10,19 @@ export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH"
 FMOD_FILE="$basedir/fmodstudioapi11020linux.tar.gz"
 
 FMOD_ARCH="$ARCH"
+LIB_ARCH="$ARCH"
 
 case "$ARCH" in
   i686)
     FMOD_ARCH="x86"
+    LIB_ARCH="lib"
     ;;
   armv7l)
     FMOD_ARCH="armhf"
+    LIB_ARCH="libarmhf"
+    ;;
+  x86_64)
+    LIB_ARCH="lib64"
     ;;
 esac
 
@@ -73,6 +79,10 @@ install -v ./libmojoshader.so -t "$PREFIX/usr/local/lib"
 cd "$basedir"
 
 
-mkdir -p fnalibs
+mkdir -p $LIB_ARCH
 cd "$PREFIX/usr/local/lib"
-cp -v libSDL2-2.0.so.0 libSDL2_image-2.0.so.0 libmojoshader.so libfmod_SDL.so libfmod.so.10 libfmodstudio.so.10 "$basedir/fnalibs"
+cp -v libSDL2-2.0.so.0 libSDL2_image-2.0.so.0 libmojoshader.so libfmod_SDL.so libfmod.so.10 libfmodstudio.so.10 "$basedir/$LIB_ARCH"
+
+cd "$basedir"
+echo "Compressing package celeste-$LIB_ARCH.tar.gz"
+tar czf celeste-$LIB_ARCH.tar.gz Celeste.sh $LIB_ARCH

@@ -1,4 +1,5 @@
 fmodstudioapi*
 lib/fmodstudioapi
 prefix
-fnalibs
+lib*
+celeste-lib*
