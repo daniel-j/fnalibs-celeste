@@ -41,7 +41,7 @@ make install
 # Build MonoKickstart
 echo ">> Building MonoKickstart"
 cd "$basedir/lib/MonoKickstart"
-rm -rf build
+# rm -rf build
 mkdir -p build
 cd build
 cmake -DCMAKE_PREFIX_PATH="$PREFIX" -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
