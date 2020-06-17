@@ -12,7 +12,7 @@ export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig:$PKG_CONFIG_PATH"
 FMOD_FILE="$basedir/fmodstudioapi11020linux.tar.gz"
 
 FMOD_ARCH="$ARCH"
-LIB_ARCH="$ARCH"
+LIB_ARCH="lib$ARCH"
 
 case "$ARCH" in
   i686)
@@ -30,6 +30,25 @@ esac
 
 # rm -rf prefix
 mkdir -p prefix/usr/local/lib
+
+# Build Mono
+echo ">> Building Mono"
+cd "$basedir/lib/mono"
+./autogen.sh --prefix="$PREFIX"
+make -j4
+make install
+
+# Build MonoKickstart
+echo ">> Building MonoKickstart"
+cd "$basedir/lib/MonoKickstart"
+# rm -rf build
+mkdir -p build
+cd build
+LDFLAGS="-lgssglue -lz -lkrb5" cmake -DCMAKE_PREFIX_PATH="$PREFIX" -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+make -j4
+mv kick.bin.* kick.bin.$ARCH || true
+chrpath -r "\$ORIGIN/$LIB_ARCH" kick.bin.*
+install -v kick.bin.* -t "$PREFIX/usr/local/bin"
 
 # Extract FMOD
 echo ">> Extracting FMOD..."
@@ -86,10 +105,19 @@ install -v ./libmojoshader.so -t "$PREFIX/usr/local/lib"
 cd "$basedir"
 
 echo ">> Copying libraries"
-mkdir -p $LIB_ARCH
+rm -rf build
+mkdir -p build/$LIB_ARCH
 cd "$PREFIX/usr/local/lib"
-cp -v libSDL2-2.0.so.0 libSDL2_image-2.0.so.0 libmojoshader.so libfmod_SDL.so libfmod.so.10 libfmodstudio.so.10 "$basedir/$LIB_ARCH"
+cp -v libSDL2-2.0.so.0 libSDL2_image-2.0.so.0 libmojoshader.so libfmod_SDL.so libfmod.so.10 libfmodstudio.so.10 "$basedir/build/$LIB_ARCH"
+cd "$PREFIX/usr/local/bin"
+cp -v kick.bin.* "$basedir/build/Celeste.bin.$ARCH"
+cd "$PREFIX"
+cp -v ./etc/mono/config "$basedir/build/monoconfig"
+cp -v ./etc/mono/config "$basedir/build/monoconfig"
+cp -v ./etc/mono/4.0/machine.config "$basedir/build/monomachineconfig"
+cp -v ./lib/mono/4.5/mscorlib.dll "$basedir/build"
 
 echo ">> Compressing package celeste-$LIB_ARCH.tar.gz"
-cd "$basedir"
-tar czf celeste-$LIB_ARCH.tar.gz Celeste.sh $LIB_ARCH
+cd "$basedir/build"
+cp ../Celeste.sh .
+tar czf ../celeste-$LIB_ARCH.tar.gz Celeste.sh $LIB_ARCH
