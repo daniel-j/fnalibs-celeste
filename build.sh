@@ -41,13 +41,13 @@ make install
 # Build MonoKickstart
 echo ">> Building MonoKickstart"
 cd "$basedir/lib/MonoKickstart"
-# rm -rf build
+rm -rf build
 mkdir -p build
 cd build
 cmake -DCMAKE_PREFIX_PATH="$PREFIX" -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
 make -j4
 mv kick.bin.* kick.bin.$ARCH || true
-chrpath -r "\$ORIGIN/$LIB_ARCH" kick.bin.*
+patchelf --set-rpath "\$ORIGIN/$LIB_ARCH" kick.bin.*
 install -v kick.bin.* -t "$PREFIX/usr/local/bin"
 
 # Extract FMOD
