@@ -117,6 +117,7 @@ cp -v libSDL2-2.0.so.0 libFNA3D.so.0 libfmod_SDL.so libfmod.so.10 libfmodstudio.
 # cp -v ./etc/mono/config "$basedir/build/monoconfig"
 # cp -v ./etc/mono/4.0/machine.config "$basedir/build/monomachineconfig"
 # cp -v ./lib/mono/4.5/mscorlib.dll "$basedir/build"
+chmod +x "$basedir/build/$LIB_ARCH/"*
 
 echo ">> Compressing package fnalibs-celeste-$LIB_ARCH.tar.gz"
 cd "$basedir/build"
