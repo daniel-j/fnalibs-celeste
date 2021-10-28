@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Uncomment this to use OpenGL ES 3
-# export FNA_OPENGL_FORCE_ES3=1
+# Uncomment to use Vulkan (experimental)
+# export FNA3D_FORCE_DRIVER=Vulkan
 
 # This enables fps and frametime overlay.
 export GALLIUM_HUD=simple,frametime,fps

@@ -1,21 +1,12 @@
-[submodule "lib/MojoShader"]
-	path = lib/MojoShader
-	url = https://github.com/FNA-XNA/MojoShader.git
-[submodule "lib/FAudio"]
-	path = lib/FAudio
-	url = https://github.com/FNA-XNA/FAudio.git
 [submodule "lib/SDL"]
 	path = lib/SDL
-	url = https://github.com/SDL-mirror/SDL.git
+	url = https://github.com/libsdl-org/SDL.git
 [submodule "lib/SDL_image_compact"]
 	path = lib/SDL_image_compact
 	url = https://github.com/FNA-XNA/SDL_image_compact.git
 [submodule "lib/FMOD_SDL"]
 	path = lib/FMOD_SDL
 	url = https://github.com/flibitijibibo/FMOD_SDL.git
-[submodule "lib/MonoKickstart"]
-	path = lib/MonoKickstart
-	url = https://github.com/flibitijibibo/MonoKickstart.git
-[submodule "lib/mono"]
-	path = lib/mono
-	url = https://github.com/mono/mono.git
+[submodule "lib/FNA3D"]
+	path = lib/FNA3D
+	url = https://github.com/FNA-XNA/FNA3D.git
