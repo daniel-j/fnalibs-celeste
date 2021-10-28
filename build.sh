@@ -53,7 +53,7 @@ mkdir -p prefix/usr/local/lib
 ## Build SDL2
 echo ">> Building SDL2..."
 cd "$basedir/lib/SDL"
-#rm -rf build
+rm -rf build
 mkdir -p build
 cd build
 cmake -DCMAKE_PREFIX_PATH="$PREFIX" -DCMAKE_INSTALL_PREFIX:PATH="$PREFIX/usr/local" -DSDL2_PREFIX="$PREFIX" -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
@@ -118,7 +118,7 @@ cp -v libSDL2-2.0.so.0 libFNA3D.so.0 libfmod_SDL.so libfmod.so.10 libfmodstudio.
 # cp -v ./etc/mono/4.0/machine.config "$basedir/build/monomachineconfig"
 # cp -v ./lib/mono/4.5/mscorlib.dll "$basedir/build"
 
-echo ">> Compressing package celeste-$LIB_ARCH.tar.gz"
+echo ">> Compressing package fnalibs-celeste-$LIB_ARCH.tar.gz"
 cd "$basedir/build"
 cp ../Celeste.sh .
 tar czf ../fnalibs-celeste-$LIB_ARCH.tar.gz *
