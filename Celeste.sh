@@ -12,7 +12,7 @@ rm -f mono_crash.*.json
 rm -f error_log.txt
 
 export LD_LIBRARY_PATH=libarmhf:$LD_LIBRARY_PATH
-export DISPLAY=${DISPLAY:-:0}
+#export DISPLAY=${DISPLAY:-:0}
 
 # If you have gamemoderun installed
 #exec gamemoderun mono ./Celeste.exe
